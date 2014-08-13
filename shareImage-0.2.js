@@ -10,7 +10,7 @@
   function windowPop(e,c,d){var a,b;a=window.screen.width/2-(c/2+10);b=window.screen.height/2-(d/2+50);window.open(e,"","status=no,height="+d+",width="+c+",resizable=yes,left="+a+",top="+b+",screenX="+a+",screenY="+b+",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no")};
   
   var PLUGIN_NAME = 'shareImage',
-      PLUGIN_VERSION = '0.1',
+      PLUGIN_VERSION = '0.1.1',
       PLUGIN_OPTIONS = {
         plattforms: {
           'facebook': {
@@ -42,6 +42,7 @@
             helper: 'digg'
           },
           'tumblr': {
+            uri: 'http://www.tumblr.com/share/link?url={url}&name={title}&img={img}',
             uri: 'http://www.tumblr.com/share/link?url={url}&name={title}&img={img}',
             helper: 'tumblr'
           },
@@ -89,7 +90,9 @@
 
       $(document).on('click', '.share-image-buttons a', function(e) {
         e.preventDefault();
-        windowPop($(this).attr('href'), 626, 437);
+        var $this = $(this),
+            size = $this.data('size').split(',');
+        windowPop($(this).attr('href'), size[0], size[1]);
       });
       
     },
@@ -98,9 +101,9 @@
 
       var img = encodeURIComponent(this.$element.attr('src')),
           title = this.opt.getTitle.apply(this.element),
-          url = this.opt.getUrl.apply(this.element),
+          url = encodeURIComponent(this.opt.getUrl.apply(this.element)),
           $element,
-          uri, helper,
+          obj, uri,
 
           html = '<span class="share-image-buttons">';
 
@@ -108,11 +111,15 @@
             if (this.opt.plattforms.hasOwnProperty(plattform)) {
 
               if (this.opt.plattforms[plattform] !== false) {
+                
+                var obj = $.extend(true, {}, {
+                  helper: plattform,
+                  size: [480, 320]
+                }, this.opt.plattforms[plattform]);
 
-                uri = this.opt.plattforms[plattform].uri.replace('{title}', title).replace('{url}', url).replace('{img}', img);
-                helper = this.opt.plattforms[plattform].helper;
+                uri = obj.uri.replace('{title}', title).replace('{url}', url).replace('{img}', img);
 
-                html += '<a href="'+uri+'" target="_blank" class="btn-'+helper+'"><i class="fa fa-'+helper+'"></i></a>';
+                html += '<a href="'+uri+'" target="_blank" class="btn-'+obj.helper+'" data-size="'+obj.size.toString()+'"><i class="fa fa-'+obj.helper+'"></i></a>';
 
               }
 

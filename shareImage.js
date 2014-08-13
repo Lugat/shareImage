@@ -1,5 +1,5 @@
 /**
-* shareImage v1.1
+* shareImage v0.1
 * https://github.com/Lugat/shareImage
 *
 * Copyright (c) 2014 Squareflower Websolutions - Lukas Rydygel

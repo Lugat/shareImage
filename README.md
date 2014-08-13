@@ -41,3 +41,7 @@ $('article img').shareImage({
 ```js
 $('article img').shareImage('destroy');
 ```
+
+### Demo
+
+http://git.squareflower.de/shareImage/

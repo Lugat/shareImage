@@ -36,6 +36,28 @@ $('article img').shareImage({
 });
 ```
 
+### Position and floating direction
+
+Possible positions are:
+cc: center/center
+lc: left/center
+rc: right/center
+tl: top/left (default)
+tr: top/right
+tc: top/center
+bl: bottom/left
+br: bottom/right
+bc: bottom center
+
+Additional floating direction can be (default: vertical):
+h: horizontal
+
+```js
+$('article img').shareImage({
+  helper: 'tl h'
+});
+```
+
 ### Destroy
 
 ```js

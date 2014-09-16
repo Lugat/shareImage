@@ -1,5 +1,5 @@
 /**
-* shareImage v0.2.1
+* shareImage v0.3
 * https://github.com/Lugat/shareImage
 *
 * Copyright (c) 2014 Squareflower Websolutions - Lukas Rydygel
@@ -10,7 +10,7 @@
   function windowPop(e,c,d){var a,b;a=window.screen.width/2-(c/2+10);b=window.screen.height/2-(d/2+50);window.open(e,"","status=no,height="+d+",width="+c+",resizable=yes,left="+a+",top="+b+",screenX="+a+",screenY="+b+",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no")};
   
   var PLUGIN_NAME = 'shareImage',
-      PLUGIN_VERSION = '0.2.1',
+      PLUGIN_VERSION = '0.3',
       PLUGIN_OPTIONS = {
         helper: 'tl',
         plattforms: {
@@ -116,7 +116,7 @@
           title = this.opt.getTitle.apply(this.element),
           url = encodeURIComponent(this.opt.getUrl.apply(this.element)),
           $element,
-          obj, uri,
+          obj, uri, floating,
 
           html = '<span class="share-image-buttons '+this.opt.helper+'">';
 
@@ -147,8 +147,12 @@
       } else {
         $element = this.$element;
       }
+      
+      floating = $element.css('float');
 
       $element.wrap('<div class="'+this.tmp['class']+'" style="'+this.tmp['style']+'" />').wrap('<div class="share-image clearfix" />').after(html);
+      
+      $element.parent('.share-image').css('float', floating);
       
     },
     

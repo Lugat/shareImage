@@ -158,11 +158,9 @@
     
     destroy: function() {
       
-      var $buttons = this.$element.parent('.share-image').children('share-image-buttons'),
-          $element;
-              
-      $buttons.children('a').unbind('click');
-      $buttons.remove();
+      this.$element.parent('.share-image').children('share-image-buttons').remove()
+      
+      var $element;
       
       if ($(this.element, 'a').length === 0) {
         $element = this.$element.closest('a');

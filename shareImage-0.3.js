@@ -150,7 +150,7 @@
       
       floating = $element.css('float');
 
-      $element.wrap('<div class="'+this.tmp['class']+'" style="'+this.tmp['style']+'" />').wrap('<div class="share-image clearfix" />').after(html);
+      $element.wrap('<div class="share-image-wrapper '+this.tmp['class']+'" style="'+this.tmp['style']+'" />').wrap('<div class="share-image clearfix" />').after(html);
       
       $element.parent('.share-image').css('float', floating);
       

@@ -1,6 +1,9 @@
 /*------------------------------------------------
     *  Share Image
 --------------------------------------------------*/
+.share-image-wrapper {
+  max-width:100%;
+}
 .share-image {
   position:relative;
   max-width:100%;
@@ -64,16 +67,12 @@
 .share-image-buttons.h a {
   float:left;
 }
-@media (min-width:768px) {
-  .share-image-buttons {
-    display:none;
-  }
-  .share-image:hover .share-image-buttons {
-    display:inline;
-  }
+.share-image-buttons {
+  display:inline;
+  opacity:0;
+  transition:all 0.3s ease-in-out;
 }
-@media (max-width:768px) {
-  .share-image-buttons {
-    display:none !important;
-  }
+.share-image:hover .share-image-buttons {
+  opacity:1;
+  transition:all 0.3s ease-in-out;
 }

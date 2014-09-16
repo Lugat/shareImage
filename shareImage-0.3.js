@@ -63,7 +63,7 @@
           return $(this).attr('alt');
         },
         getUrl: function() {
-          return $(this).parent('article').find('h1, h2, h3').children('a').attr('href');
+          return $(this).parents('article').find('h1, h2, h3').children('a').attr('href');
         }
       };
       
@@ -88,7 +88,7 @@
       
       this._buildHtml();
 
-      $(document).on('click', '.share-image-buttons a', function(e) {
+      this.$element.parent('.share-image').children('.share-image-buttons').children('a').bind('click', function(e) {
         e.preventDefault();
         var $this = $(this),
             size = $this.data('size').split(',');
@@ -158,9 +158,11 @@
     
     destroy: function() {
       
-      this.$element.parent('.share-image').children('.share-image-buttons').remove();
-      
-      var $element;
+      var $buttons = this.$element.parent('.share-image').children('share-image-buttons'),
+          $element;
+              
+      $buttons.children('a').unbind('click');
+      $buttons.remove();
       
       if ($(this.element, 'a').length === 0) {
         $element = this.$element.closest('a');
@@ -176,8 +178,6 @@
         'class': this.tmp['class'],
         'style': this.tmp['style']
       });
-      
-      $(document).off('click', '.share-image-buttons a'); 
       
     }
     

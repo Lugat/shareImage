@@ -1,0 +1,79 @@
+/*------------------------------------------------
+    *  Share Image
+--------------------------------------------------*/
+.share-image {
+  position:relative;
+  max-width:100%;
+  display:inline-block;
+}
+.share-image-buttons {
+  position:absolute;
+  z-index:100;
+}
+/* center-center */
+.share-image-buttons.cc {
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+/* left-center */
+.share-image-buttons.lc {
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+}
+/* right-center */
+.share-image-buttons.rc {
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+}
+/* top-left */
+.share-image-buttons.tl {
+  top:0;
+  left:0;
+}
+/* top-right */
+.share-image-buttons.tr {
+  top:0;
+  right:0;
+}
+/* top-center */
+.share-image-buttons.tc {
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+/* bottom-left */
+.share-image-buttons.bl {
+  bottom:0;
+  left:0;
+}
+/* bottom-right */
+.share-image-buttons.br {
+  bottom:0;
+  right:0;
+}
+/* bottom-center */
+.share-image-buttons.bc {
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+/* horizontal */
+.share-image-buttons.h a {
+  float:left;
+}
+@media (min-width:768px) {
+  .share-image-buttons {
+    display:none;
+  }
+  .share-image:hover .share-image-buttons {
+    display:inline;
+  }
+}
+@media (max-width:768px) {
+  .share-image-buttons {
+    display:none !important;
+  }
+}

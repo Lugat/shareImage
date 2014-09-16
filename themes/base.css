@@ -1,51 +1,10 @@
 /*------------------------------------------------
-    *  Share Image
+    *  Base
 --------------------------------------------------*/
-.share-image {
-  position:relative;
-  display:inline-block;
-}
-.share-image-buttons {
-  position:absolute;
-  padding:5px 5px 0 5px;
-  top:5px;
-  left:5px;
-  background:rgba(255, 255, 255, 0.8);
-  border-radius:4px;
-  z-index:100;
-}
-@media (min-width:768px) {
-  .share-image-buttons {
-    display:none;
-  }
-  .share-image:hover .share-image-buttons {
-    display:inline;
-  }
-}
-@media (max-width:768px) {
-  .share-image-buttons {
-    display:none !important;
-  }
-}
-.share-image-buttons a {
-  margin:0 0 5px 0;
-  width:21px;
-  height:21px;
-  line-height:21px;
-  color:#fff;
-  font-size:13px;
-  text-align:center;
-  display:block;
-  border-radius:3px;
-  opacity:.6;
-}
-.share-image-buttons a i {
-  color:#fff;
-}
+.share-image-buttons a i,
 .share-image-buttons a:hover,
 .share-image-buttons a:focus,
 .share-image-buttons a:active {
-  opacity:1;
   color:#fff;
 }
 .share-image-buttons a.btn-share-alt {

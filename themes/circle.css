@@ -1,0 +1,31 @@
+@import url('base.css');
+/*------------------------------------------------
+    *  Circle Theme
+--------------------------------------------------*/
+.share-image-buttons {
+  padding:5px 0 0 0;
+}
+.share-image-buttons.h {
+  padding:5px 0 0 5px;
+}
+.share-image-buttons a {
+  margin:0 5px 5px 5px;
+  width:24px;
+  height:24px;
+  line-height:21px;
+  color:#fff;
+  font-size:11px;
+  text-align:center;
+  display:block;
+  border-radius:100%;
+  opacity:.6;
+  border:3px solid rgba(255, 255, 255, 0.6);
+}
+.share-image-buttons.h a {
+  margin:0 5px 5px 0;
+}
+.share-image-buttons a:hover,
+.share-image-buttons a:focus,
+.share-image-buttons a:active {
+  opacity:1;
+}

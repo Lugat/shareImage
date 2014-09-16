@@ -1,0 +1,70 @@
+@import url('base.css');
+/*------------------------------------------------
+    *  Default Theme
+--------------------------------------------------*/
+.share-image-buttons {
+  padding:5px 0 0 0;
+  background:rgba(255, 255, 255, 0.8);
+}
+.share-image-buttons.h {
+  padding:5px 0 0 5px;
+}
+.share-image-buttons.cc {
+  border-radius:4px;
+}
+/* left-center */
+.share-image-buttons.lc {
+  border-top-right-radius:4px;
+  border-bottom-right-radius:4px;
+}
+/* right-center */
+.share-image-buttons.rc {
+  border-top-left-radius:4px;
+  border-bottom-left-radius:4px;
+}
+/* top-left */
+.share-image-buttons.tl {
+  border-bottom-right-radius:4px;
+}
+/* top-right */
+.share-image-buttons.tr {
+  border-bottom-left-radius:4px;
+}
+/* top-center */
+.share-image-buttons.tc {
+  border-bottom-right-radius:4px;
+  border-bottom-left-radius:4px;
+}
+/* bottom-left */
+.share-image-buttons.bl {
+  border-top-right-radius:4px;
+}
+/* bottom-right */
+.share-image-buttons.br {
+  border-top-left-radius:4px;
+}
+/* bottom-center */
+.share-image-buttons.bc {
+  border-top-left-radius:4px;
+  border-top-right-radius:4px;
+}
+.share-image-buttons a {
+  margin:0 5px 5px 5px;
+  width:21px;
+  height:21px;
+  line-height:21px;
+  color:#fff;
+  font-size:13px;
+  text-align:center;
+  display:block;
+  border-radius:3px;
+  opacity:.6;
+}
+.share-image-buttons.h a {
+  margin:0 5px 5px 0;
+}
+.share-image-buttons a:hover,
+.share-image-buttons a:focus,
+.share-image-buttons a:active {
+  opacity:1;
+}

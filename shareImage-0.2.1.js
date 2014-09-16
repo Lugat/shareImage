@@ -1,5 +1,5 @@
 /**
-* shareImage v0.1
+* shareImage v0.2.1
 * https://github.com/Lugat/shareImage
 *
 * Copyright (c) 2014 Squareflower Websolutions - Lukas Rydygel
@@ -10,8 +10,9 @@
   function windowPop(e,c,d){var a,b;a=window.screen.width/2-(c/2+10);b=window.screen.height/2-(d/2+50);window.open(e,"","status=no,height="+d+",width="+c+",resizable=yes,left="+a+",top="+b+",screenX="+a+",screenY="+b+",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no")};
   
   var PLUGIN_NAME = 'shareImage',
-      PLUGIN_VERSION = '0.1.1',
+      PLUGIN_VERSION = '0.2.1',
       PLUGIN_OPTIONS = {
+        helper: 'tl',
         plattforms: {
           'facebook': {
             uri: 'https://www.facebook.com/sharer/sharer.php?u={url}?title={title}&img={img}',
@@ -43,7 +44,6 @@
           },
           'tumblr': {
             uri: 'http://www.tumblr.com/share/link?url={url}&name={title}&img={img}',
-            uri: 'http://www.tumblr.com/share/link?url={url}&name={title}&img={img}',
             helper: 'tumblr'
           },
           'reddit': {
@@ -71,12 +71,12 @@
     
     this.name = PLUGIN_NAME;
     this.version = PLUGIN_VERSION;        
-    this.opt = PLUGIN_OPTIONS;
+    this.opt = $.extend(true, {}, PLUGIN_OPTIONS, options);
+    
+    this.tmp = {};
 
     this.element = element;
     this.$element = $(element);
-      
-    this.setOptions(options);
     
     this._init();
     
@@ -99,13 +99,26 @@
     
     _buildHtml: function() {
 
+      this.tmp['class'] = this.$element.attr('class');
+      this.tmp['style'] = this.$element.attr('style');
+      
+      if (this.tmp['class'] === undefined) {
+        this.tmp['class'] = '';
+      }
+      
+      if (this.tmp['style'] === undefined) {
+        this.tmp['style'] = '';
+      }
+      
+      this.$element.removeAttr('class style');
+
       var img = encodeURIComponent(this.$element.attr('src')),
           title = this.opt.getTitle.apply(this.element),
           url = encodeURIComponent(this.opt.getUrl.apply(this.element)),
           $element,
           obj, uri,
 
-          html = '<span class="share-image-buttons">';
+          html = '<span class="share-image-buttons '+this.opt.helper+'">';
 
           for (var plattform in this.opt.plattforms) {
             if (this.opt.plattforms.hasOwnProperty(plattform)) {
@@ -114,12 +127,13 @@
                 
                 var obj = $.extend(true, {}, {
                   helper: plattform,
+                  title: 'share on '+plattform,
                   size: [480, 320]
                 }, this.opt.plattforms[plattform]);
 
                 uri = obj.uri.replace('{title}', title).replace('{url}', url).replace('{img}', img);
 
-                html += '<a href="'+uri+'" target="_blank" class="btn-'+obj.helper+'" data-size="'+obj.size.toString()+'"><i class="fa fa-'+obj.helper+'"></i></a>';
+                html += '<a href="'+uri+'" target="_blank" class="btn-'+obj.helper+'" data-size="'+obj.size.toString()+'" title="'+obj.title+'"><i class="fa fa-'+obj.helper+'"></i></a>';
 
               }
 
@@ -134,30 +148,8 @@
         $element = this.$element;
       }
 
-      $element.wrap('<div class="share-image clearfix" />').after(html);
+      $element.wrap('<div class="'+this.tmp['class']+'" style="'+this.tmp['style']+'" />').wrap('<div class="share-image clearfix" />').after(html);
       
-    },
-    
-    setOptions: function(options) {
-        this.opt = $.extend(true, {}, this.opt, options);
-    },
-
-    getOptions: function() {
-        return this.opt;
-    },
-
-    options: function(options) {
-        return typeof options === 'object' ? this.setOptions(options) : this.getOptions();
-    },
-
-    option: function(option, value) {
-      if (typeof option === 'string' && this.opt[option]) {
-        if (value === undefined) {
-          return this.opt[option];
-        } else {
-          this.opt[option] = value;
-        }
-      }
     },
     
     destroy: function() {
@@ -172,7 +164,14 @@
         $element = this.$element;
       }
       
-      $element.unwrap();
+      $element.unwrap().unwrap();
+      
+      var tmp = this.$element.data()
+      
+      this.$element.attr({
+        'class': this.tmp['class'],
+        'style': this.tmp['style']
+      });
       
       $(document).off('click', '.share-image-buttons a'); 
       

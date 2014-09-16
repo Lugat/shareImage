@@ -6,21 +6,76 @@
 
     <meta charset="utf-8" />
 
-    <title>ShareImage 0.2</title>
+    <title>ShareImage 0.2.1</title>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="shareImage-0.2.js"></script>
+    <script type="text/javascript" src="shareImage-0.2.1.js"></script>
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="shareImage.css" rel="stylesheet">
+    <link href="shareImage-0.2.1.css" rel="stylesheet">
+    <link href="themes/default.css" rel="stylesheet" id="theme">
+    
+    <style>
+      img { max-width:100%; }
+      p { text-align:justify; }
+    </style>
     
     <script>
 
       $(function() {
-        $('article img').shareImage();
+        
+        $('article:eq(0) img').shareImage();
+        
+        $('article:eq(1) img').shareImage({
+          helper: 'tr h',
+          plattforms: {
+            'linkedin': false,
+            'buffer': false,
+            'digg': false,
+            'tumblr': false,
+            'reddit': false,
+            'stumbleupon': false,
+            'delicious': false
+          }
+        });
+        
+        $('article:eq(2) img').shareImage({
+          helper: 'bc h',
+          plattforms: {
+            'linkedin': false,
+            'buffer': false,
+            'digg': false,
+            'tumblr': false,
+            'reddit': false,
+            'stumbleupon': false,
+            'delicious': false
+          }
+        });
+        
+        $('article:eq(3) img').shareImage({
+          helper: 'cc',
+          plattforms: {
+            'linkedin': false,
+            'buffer': false,
+            'digg': false,
+            'tumblr': false,
+            'reddit': false,
+            'stumbleupon': false,
+            'delicious': false
+          }
+        });
+        
+        $('select').change(function() {
+          
+          var val = $(this).val();
+          
+          $('#theme').attr('href', val);
+          
+        });
+        
       });
 
     </script>
@@ -31,15 +86,104 @@
     
     <div class="container">
       
-      <article>
+      <select>
+        <option value="themes/default.css" selected="selected">Default theme</option>
+        <option value="themes/flat.css">Flat theme</option>
+        <option value="themes/circle.css">Circle theme</option>
+      </select>
       
-        <h3>
-          <a href="http://placekitten.com">This is a sweet kitten</a>
-        </h3>
+      <div class="row">
+        <div class="col-sm-6">
 
-        <img src="http://placekitten.com/400/400" alt="Kitten" />
+          <article>
 
-      </article>
+            <h3>
+              <a href="http://placekitten.com">Lorem ipsum dolor</a>
+            </h3>
+            
+            <hr />
+            
+            <p>
+              
+              <img src="http://placekitten.com/400/400" alt="Kitten" style="margin:0 15px 15px 0;float:left" />
+
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+            </p>
+
+          </article>
+          
+        </div>
+        <div class="col-sm-6">
+
+          <article>
+            
+            <img src="http://placekitten.com/250/500" alt="Kitten" style="margin:0 0 15px 15px;float:right" />
+
+            <h3>
+              <a href="http://placekitten.com">Lorem ipsum dolor</a>
+            </h3>
+            
+            <hr />
+
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+
+          </article>
+          
+        </div>
+      </div>
+      
+      <hr />
+      
+      <div class="row">
+        <div class="col-md-8">
+          
+          <article>
+
+            <h3>
+              <a href="http://placekitten.com">Lorem ipsum dolor</a>
+            </h3>
+            
+            <hr />
+            
+            <img src="http://placekitten.com/1140/250" alt="Kitten" style="margin:0 0 15px 0;" />
+          
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            
+          </article>
+          
+        </div>
+        <div class="col-md-4">
+          
+          <article>
+
+            <h3>
+              <a href="http://placekitten.com">Lorem ipsum dolor</a>
+            </h3>
+            
+            <hr />
+            
+            <div class="text-center">
+              <img src="http://placekitten.com/300/300" alt="Kitten" style="margin:0 auto 15px auto;" />
+            </div>
+          
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            
+            
+          </article>
+          
+        </div>
+      </div>
       
     </div>
 

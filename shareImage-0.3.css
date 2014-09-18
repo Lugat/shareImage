@@ -4,6 +4,9 @@
 .share-image-wrapper {
   max-width:100%;
 }
+.share-image-wrapper * {
+  box-sizing:border-box;
+}
 .share-image {
   position:relative;
   max-width:100%;
@@ -69,10 +72,14 @@
 }
 .share-image-buttons {
   display:inline;
-  opacity:0;
-  transition:all 0.3s ease-in-out;
 }
-.share-image:hover .share-image-buttons {
-  opacity:1;
-  transition:all 0.3s ease-in-out;
+@media (min-width:768px) {
+  .share-image-buttons {
+    opacity:0;
+    transition:all 0.3s ease-in-out;
+  }
+  .share-image:hover .share-image-buttons {
+    opacity:1;
+    transition:all 0.3s ease-in-out;
+  }
 }

@@ -1,10 +1,7 @@
 /*------------------------------------------------
     *  Base
 --------------------------------------------------*/
-.share-image-buttons a i,
-.share-image-buttons a:hover,
-.share-image-buttons a:focus,
-.share-image-buttons a:active {
+.share-image-buttons a i {
   color:#fff;
 }
 .share-image-buttons a.btn-share-alt {

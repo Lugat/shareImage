@@ -12,6 +12,9 @@
   max-width:100%;
   display:inline-block;
 }
+.share-image img {
+  display:block;
+}
 .share-image-buttons {
   position:absolute;
   z-index:100;

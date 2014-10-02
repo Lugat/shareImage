@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ShareImage by Lugat</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ShareImage</h1>
+        <p>A simple jQuery Plugin to share images from your website to all kind of social networks.</p>
+
+        <p class="view"><a href="https://github.com/Lugat/shareImage">View the Project on GitHub <small>Lugat/shareImage</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Lugat/shareImage/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Lugat/shareImage/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Lugat/shareImage">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+
+<p>To use the plugin you need to include jQuery and jQuery-UI.</p>
+
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'article img'</span><span class="p">).</span><span class="nx">shareImage</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<h4>
+<a name="title-and-url" class="anchor" href="#title-and-url"><span class="octicon octicon-link"></span></a>Title and URL</h4>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'article img'</span><span class="p">).</span><span class="nx">shareImage</span><span class="p">({</span>
+  <span class="nx">getTitle</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'share-title'</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">getUrl</span><span class="o">:</span> <span class="nx">fuction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h4>
+<a name="plattforms" class="anchor" href="#plattforms"><span class="octicon octicon-link"></span></a>Plattforms</h4>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'article img'</span><span class="p">).</span><span class="nx">shareImage</span><span class="p">({</span>
+  <span class="nx">plattforms</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">'facebook'</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s1">'custom'</span> <span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">'http://example.com/?url={url}&amp;title={title}&amp;img={img}'</span><span class="p">,</span>
+      <span class="nx">helper</span><span class="o">:</span> <span class="s1">'example'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h4>
+<a name="position-and-floating-direction" class="anchor" href="#position-and-floating-direction"><span class="octicon octicon-link"></span></a>Position and floating direction</h4>
+
+<p>Possible positions are: cc: center/center lc: left/center rc: right/center tl: top/left (default) tr: top/right tc: top/center bl: bottom/left br: bottom/right bc: bottom center</p>
+
+<p>Additional floating direction can be (default: vertical): h: horizontal</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'article img'</span><span class="p">).</span><span class="nx">shareImage</span><span class="p">({</span>
+  <span class="nx">helper</span><span class="o">:</span> <span class="s1">'tl h'</span>
+<span class="p">});</span>
+</pre></div>
+
+<h4>
+<a name="destroy" class="anchor" href="#destroy"><span class="octicon octicon-link"></span></a>Destroy</h4>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'article img'</span><span class="p">).</span><span class="nx">shareImage</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">);</span>
+</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Lugat">Lugat</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
